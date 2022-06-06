@@ -1,20 +1,52 @@
+
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-buttons slot="start">
+        <ion-button (click)="verMenu()">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title id="Challenge">
+      Desafío restaurante
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<app-menu></app-menu>
+<ion-content>
+  <div class="scroll">
+    <ion-segment mode="ios" scrollable>
+      <ion-segment-button (click)="cambiarRoom(room)" *ngFor="let room of rooms" [value]="room.id">
+        <ion-label>{{room.nombre}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+    <ng-container *ngIf="roomSeleccionado != null">
+      <div [attr.disabled]="" class="example-boundary">
+        <ng-container *ngFor="let mueble of roomSeleccionado.muebles">
+          <div [ngClass]="mueble.figura == 'circulo'? 'circulo': ''" *ngIf="mueble.figura != 'texto' && mueble.figura != 'rombo'" style.width="{{mueble.tamano.width}}px" style.height="{{mueble.tamano.height}}px" 
+            [style.backgroundColor]="mueble.color" (click)="verPopover($event, mueble)" 
+            class="example-box" cdkDragBoundary=".example-boundary" cdkDrag [cdkDragFreeDragPosition]="{x: mueble.position.x, y: mueble.position.y}" 
+            (cdkDragEnded)="setPositionMueble($event, mueble)">
+            <p [ngClass]="mueble.figura == 'circulo'? 'textoCentrado': ''" *ngIf="mueble.figura != 'pared'">{{mueble.text}}</p>
+          </div>
+
+          <div *ngIf="mueble.figura == 'rombo'" (click)="verPopover($event, mueble)" 
+          class="example-box" cdkDragBoundary=".example-boundary" cdkDrag [cdkDragFreeDragPosition]="{x: mueble.position.x, y: mueble.position.y}" 
+          (cdkDragEnded)="setPositionMueble($event, mueble)">
+            <div class="rombo" style.width="{{mueble.tamano.width}}px" style.height="{{mueble.tamano.height}}px" 
+            [style.backgroundColor]="mueble.color">
+              <p [ngClass]="mueble.figura == 'rombo'? 'textoCentrado': ''" class="parrafo-rombo">{{mueble.text}}</p>
+            </div>
+          </div>
+
+          <div (click)="verPopover($event,mueble)" class="figura-texto" *ngIf="mueble.figura == 'texto'" cdkDragBoundary=".example-boundary" cdkDrag 
+            [cdkDragFreeDragPosition]="{x: mueble.position.x, y: mueble.position.y}" (cdkDragEnded)="setPositionMueble($event, mueble)">
+            {{mueble.text}} 
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
   </div>
 </ion-content>

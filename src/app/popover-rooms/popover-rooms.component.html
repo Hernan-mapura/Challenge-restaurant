@@ -1,0 +1,11 @@
+<ion-list>
+  <ion-item>
+      <ion-label>
+          Cuartos:
+      </ion-label>
+      <ion-input></ion-input>
+  </ion-item>
+  <ion-item *ngFor="let room of rooms">
+    <ion-button color="warning" (click)="eliminarRoom(room)">{{room.nombre}}</ion-button>
+  </ion-item>
+</ion-list>

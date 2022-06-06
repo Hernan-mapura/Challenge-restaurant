@@ -8,6 +8,20 @@
   transform: translateY(-50%);
 }
 
+ion-segment-button {
+  border: 1px solid lightgray;
+  margin-right: 5px;
+  min-width: auto;
+  --indicator-box-shadow: none;
+  --background-checked: var(--ion-color-primary);
+  --indicator-color: var(--ion-color-primary);
+  --color-checked: var(--ion-color-light);
+}
+
+ion-segment-button::before {
+  border-left: none;
+}
+
 #container strong {
   font-size: 20px;
   line-height: 26px;
@@ -24,4 +38,62 @@
 
 #container a {
   text-decoration: none;
+}
+
+#Challenge{
+  text-align: center;
+}
+
+.example-box {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  border: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: move;
+  text-align: center;
+}
+
+.figura-texto {
+  color: rgba(0, 0, 0, 0.87);
+  cursor: move;
+  text-align: center;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.example-boundary {
+  margin: 0;
+  width: 1540px;
+  margin: 1%;
+  height: 670px;
+  border: dotted #ccc 2px;
+}
+
+.scroll{
+  overflow-x: auto;
+}
+
+.rombo{
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+.parrafo-rombo{
+  left: 13px;
+  transform: rotate(-45deg);
+  position: absolute;
+  display: inline;
+  top: 13px;
+}
+
+.circulo{
+  border-radius: 50%;
+}
+
+.textoCentrado{
+  position: absolute;
+  top: 10%;
+  left: 10%;
 }

@@ -1,0 +1,29 @@
+<ion-list>
+  <ion-item>
+      <ion-label>
+          Color:
+      </ion-label>
+      <ion-input [attr.disabled]="mueble.figura=='pared' || mueble.figura=='texto'" [formControl]="formColor" type="color"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="mueble.figura!='pared' && mueble.figura != 'texto'">
+    <ion-button appDirectiva (onPressMouse)="Aumentar()" (click)="Aumentar()">Aumentar</ion-button>
+    <ion-button appDirectiva (onPressMouse)="Reducir()" (click)="Reducir()">Reducir</ion-button>
+  </ion-item>
+  <ion-item *ngIf="mueble.figura=='pared' && mueble.figura != 'texto'">
+    <ion-label>Ancho</ion-label>
+    <ion-button appDirectiva (onPressMouse)="aumentarWidth()" (click)="aumentarWidth()">Aumentar</ion-button>
+    <ion-button appDirectiva (onPressMouse)="reducirWidth()" (click)="reducirWidth()">Reducir</ion-button>
+  </ion-item>
+  <ion-item *ngIf="mueble.figura=='pared' && mueble.figura != 'texto'">
+    <ion-label>Alto</ion-label>
+    <ion-button appDirectiva (onPressMouse)="aumentarHeight()" (click)="aumentarHeight()">Aumentar</ion-button>
+    <ion-button appDirectiva (onPressMouse)="reducirHeight()" (click)="reducirHeight()">Reducir</ion-button>
+  </ion-item>
+  <ion-item *ngIf="mueble.figura=='texto'">
+    <ion-label>Cambiar titulo: </ion-label>
+    <ion-input [formControl]="formTexto" placeholder="Texto aquí"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-button (click)="eliminarMueble()">Eliminar</ion-button>
+  </ion-item>
+</ion-list>

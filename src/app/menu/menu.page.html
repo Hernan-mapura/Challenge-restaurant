@@ -1,0 +1,53 @@
+<ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
+  <ion-header>
+    <ion-toolbar color="tertiary">
+      <ion-buttons class="cerrar" slot="start">
+        <ion-button (click)="cerrarMenu()">
+          <ion-title>Menu</ion-title>
+      </ion-button>
+    </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-button (click)="setBoleano()" color="primary">Añadir figura</ion-button>
+        <ion-list class="figuras" *ngIf="boleano">
+          <ion-item class="espacioFigura">
+            <ion-button (click)="agregarCuadrado()" color="secondary">Cuadrado</ion-button>
+            <div class="cuadr"></div>
+          </ion-item>
+          <ion-item class="espacioFigura">
+            <ion-button (click)="agregarRectangulo()" color="secondary">Rectangulo</ion-button>
+            <div class="recta"></div>
+          </ion-item>
+          <ion-item class="espacioFigura">
+            <ion-button (click)="agregarRectangulo2()" color="secondary">Rectangulo</ion-button>
+            <div class="recta2"></div>
+          </ion-item>
+          <ion-item class="espacioFigura">
+            <ion-button (click)="agregarRombo()" color="secondary">Rombo</ion-button>
+            <div class="romb"></div>
+          </ion-item>
+          <ion-item class="espacioFigura">
+            <ion-button (click)="agregarCirculo()" color="secondary">Circulo</ion-button>
+            <div class="circ"></div>
+          </ion-item>
+          <ion-item class="espacioFigura">
+            <ion-button (click)="agregarPared()" color="secondary">Pared</ion-button>
+            <div class="pare"></div>
+          </ion-item>
+          <ion-item class="espacioFigura">
+            <ion-button (click)="agregarTitulo()" color="secondary">Titulo</ion-button>
+            <ion-label class="titul">Titulo</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="crearRoom()" color="danger">Crear nuevo cuarto</ion-button>
+        <ion-button (click)="verPopover($event)" color="danger">Eliminar cuarto</ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="main"></ion-router-outlet>
